@@ -30,7 +30,7 @@ function get_required_packages() {
     "centos" | "rhel" | "rocky")
         required_packages=('fontconfig' 'libX11' 'libxkbcommon-x11' 'xcb-util-renderutil' 'libglvnd-egl' 'libglvnd-opengl' 'libxkbcommon')
         ;;
-    "ubuntu")
+    "ubuntu" | "linuxmint")
         required_packages=('fontconfig' 'libegl1' 'libopengl0' 'libxkbcommon0' 'libxcb-xinput0')
         ;;
     *)
@@ -46,7 +46,7 @@ get_required_packages "$@"
 
 function check_if_package_installed() {
     case "$platform" in
-    "ubuntu")
+    "ubuntu" | "linuxmint")
         cmd="dpkg -s"
         ;;
     "centos" | "rhel" | "rocky" | "sled" | "sles")
@@ -66,7 +66,7 @@ function get_package_manager() {
     "centos" | "rhel" | "rocky")
         package_manager="yum"
         ;;
-    "ubuntu")
+    "ubuntu" | "linuxmint")
         package_manager="apt-get"
         ;;
     "sles" | "sled")
